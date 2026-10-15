@@ -300,6 +300,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding
   function applyLang(l){root.setAttribute('data-lang',l);root.lang=l;lb.textContent=l==='en'?'VI':'EN';fill()}
   pick(0);applyLang(lang);
   lb.addEventListener('click',function(){lang=lang==='en'?'vi':'en';applyLang(lang);set('pf-lang',lang)});
+  addEventListener('hashchange',function(){if(location.hash==='#en'&&lang!=='en'){lang='en';applyLang(lang)}});
   var th=get('pf-theme');if(th)root.setAttribute('data-theme',th);
   document.getElementById('theme').addEventListener('click',function(){
     var c=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
