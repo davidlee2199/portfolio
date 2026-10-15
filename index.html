@@ -6,18 +6,24 @@
 /* Layout: trang sản phẩm kiểu Linear/Vercel — nav mảnh, tiêu đề 2 tông canh trái, "ảnh sản phẩm" là bảng điều khiển 7 website đang chạy; phần dưới là changelog kinh nghiệm và lưới ô kẻ mảnh. */
 :root{
   --bg:#fafafa; --panel:#ffffff; --sunk:#f3f3f3; --fg:#171717; --muted:#5f5f5f; --faint:#8a8a8a; --line:#e6e6e6; --line-strong:#d4d4d4;
-  --accent:#2f5bea; --live:#16a34a; --on-fg:#fafafa;
+  --accent:#c2410c; --accent-ink:#ffffff; --live:#b7791f; --on-fg:#fafafa;
+  --earth:#8f5406; --brown:#8a4b1c; --violet:#7e22ce; --fire-deep:#9a3412;
+  --t-fire:#fff1e9; --t-earth:#fdf4dc; --t-brown:#f6ece3; --t-violet:#f5ecfd;
   --shadow:0 0 0 1px #00000014,0 1px 2px #0000000a,0 12px 32px -12px #00000024;
   --sans:'Be Vietnam Pro','Segoe UI',system-ui,sans-serif; --mono:'Geist Mono',ui-monospace,Consolas,monospace;
   --ease:cubic-bezier(.16,1,.3,1);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0a0a0a; --panel:#111111; --sunk:#161616; --fg:#ededed; --muted:#a3a3a3; --faint:#737373; --line:#222222; --line-strong:#333333;
-  --accent:#7193ff; --live:#3ddc84; --on-fg:#0a0a0a;
+  --accent:#ff8a57; --accent-ink:#1a0a03; --live:#e8b04b; --on-fg:#0a0a0a;
+  --earth:#e8b04b; --brown:#d9a273; --violet:#c79bff; --fire-deep:#7c2d12;
+  --t-fire:#2a160d; --t-earth:#2a210d; --t-brown:#261c14; --t-violet:#22172e;
   --shadow:0 0 0 1px #ffffff14,0 16px 32px -16px #000000cc; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0a0a0a; --panel:#111111; --sunk:#161616; --fg:#ededed; --muted:#a3a3a3; --faint:#737373; --line:#222222; --line-strong:#333333;
-  --accent:#7193ff; --live:#3ddc84; --on-fg:#0a0a0a;
+  --accent:#ff8a57; --accent-ink:#1a0a03; --live:#e8b04b; --on-fg:#0a0a0a;
+  --earth:#e8b04b; --brown:#d9a273; --violet:#c79bff; --fire-deep:#7c2d12;
+  --t-fire:#2a160d; --t-earth:#2a210d; --t-brown:#261c14; --t-violet:#22172e;
   --shadow:0 0 0 1px #ffffff14,0 16px 32px -16px #000000cc; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
@@ -48,8 +54,8 @@ svg.i{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-widt
 .pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;font:500 .9rem var(--sans);letter-spacing:-.005em;text-decoration:none;cursor:pointer;border:1px solid var(--line-strong);background:var(--panel);color:var(--fg);transition:background .15s,border-color .15s,transform .15s var(--ease)}
 .pill:hover{border-color:var(--faint)}
 .pill:active{transform:scale(.98)}
-.pill.dark{background:var(--fg);color:var(--on-fg);border-color:var(--fg)}
-.pill.dark:hover{background:color-mix(in srgb,var(--fg) 86%,var(--bg))}
+.pill.dark{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.pill.dark:hover{background:color-mix(in srgb,var(--accent) 88%,var(--fg))}
 .pill.sm{height:32px;padding:0 14px;font-size:.84rem}
 .theme-ico .moon{display:none}
 :root[data-theme="dark"] .theme-ico .sun{display:none}:root[data-theme="dark"] .theme-ico .moon{display:block}
@@ -58,7 +64,7 @@ svg.i{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-widt
 /* Hero */
 .hero{padding-block:88px 40px;display:grid;gap:28px}
 .hero h1{font-size:clamp(2.3rem,5.4vw,4.1rem);line-height:1.04;letter-spacing:-.04em;font-weight:600;max-width:27ch}
-.hero h1 span.tone{color:var(--faint)}
+.hero h1 span.tone{color:var(--accent)}
 .sub{font-size:1.08rem;line-height:1.6;color:var(--muted);max-width:58ch}
 .sub b{color:var(--fg);font-weight:500}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
@@ -70,7 +76,7 @@ svg.i{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-widt
 
 /* Console */
 .stagewrap{position:relative;isolation:isolate}
-.stagewrap::before{content:"";position:absolute;z-index:-1;inset:-48px 0 -64px;background:radial-gradient(60% 55% at 50% 38%,color-mix(in srgb,var(--fg) 7%,transparent),transparent 72%);pointer-events:none}
+.stagewrap::before{content:"";position:absolute;z-index:-1;inset:-48px 0 -64px;background:radial-gradient(55% 55% at 50% 40%,color-mix(in srgb,var(--accent) 16%,transparent),color-mix(in srgb,var(--earth) 7%,transparent) 45%,transparent 72%);pointer-events:none}
 .console{border-radius:14px;background:var(--panel);box-shadow:var(--shadow);overflow:hidden}
 .c-top{display:flex;align-items:center;gap:12px;height:44px;padding:0 14px;border-bottom:1px solid var(--line);font-size:.82rem}
 .c-top b{font-weight:600;white-space:nowrap}
@@ -80,7 +86,8 @@ svg.i{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-widt
 .rail{border-right:1px solid var(--line);padding:8px;display:grid;align-content:start;gap:2px;background:var(--panel)}
 .site{all:unset;box-sizing:border-box;display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:center;padding:9px 10px;border-radius:8px;cursor:pointer;transition:background .15s}
 .site:hover{background:var(--sunk)}
-.site[aria-selected="true"]{background:var(--sunk);box-shadow:inset 0 0 0 1px var(--line)}
+.site[aria-selected="true"]{background:var(--t-fire);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 35%,transparent)}
+.site[aria-selected="true"] .nm{color:var(--accent)}
 .site:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .site .dot{grid-row:span 2}
 .site .nm{font-size:.86rem;font-weight:500;line-height:1.25}
@@ -113,7 +120,7 @@ section{padding-block:96px 0;scroll-margin-top:72px}
 .log{margin-top:36px;border-top:1px solid var(--line)}
 .entry{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 40px;padding:28px 0;border-bottom:1px solid var(--line)}
 .entry .when{font:400 .8rem/1.9 var(--mono);color:var(--muted)}
-.entry .when .now{display:inline-flex;align-items:center;gap:6px;color:var(--live);font-weight:500}
+.entry .when .now{display:inline-flex;align-items:center;gap:6px;color:var(--earth);font-weight:500}
 .entry h3{font-size:1.05rem;font-weight:600;letter-spacing:-.015em}
 .co{color:var(--muted);font-weight:500}
 .co::before{content:"· "}
@@ -127,16 +134,27 @@ section{padding-block:96px 0;scroll-margin-top:72px}
 .skills{margin-top:36px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
 .skills .cell{gap:14px}
 .skills .tags{gap:6px}
+.k-fire .tag{background:var(--t-fire);border-color:color-mix(in srgb,var(--accent) 30%,transparent);color:var(--accent)}
+.k-earth .tag{background:var(--t-earth);border-color:color-mix(in srgb,var(--earth) 32%,transparent);color:var(--earth)}
+.k-brown .tag{background:var(--t-brown);border-color:color-mix(in srgb,var(--brown) 30%,transparent);color:var(--brown)}
+.k-violet .tag{background:var(--t-violet);border-color:color-mix(in srgb,var(--violet) 28%,transparent);color:var(--violet)}
 .edu{margin-top:48px;display:grid;border-top:1px solid var(--line)}
 .edu div{display:grid;grid-template-columns:200px minmax(0,1fr);gap:4px 40px;padding:16px 0;border-bottom:1px solid var(--line)}
 .edu .mono{color:var(--muted);font-size:.8rem;padding-top:2px}
 
 /* Contact */
-.contact{padding-block:120px 48px;display:grid;gap:22px;justify-items:start}
+.contact{margin-top:120px;padding:56px clamp(24px,5vw,64px);border-radius:20px;background:var(--fire-deep);color:#fff7f2;display:grid;gap:22px;justify-items:start}
+.contact .sub{color:#ffd9c7}
+.contact .sub b{color:#fff}
+.contact .pill{background:transparent;color:#fff7f2;border-color:#ffffff59}
+.contact .pill:hover{border-color:#fff}
+.contact .pill.dark{background:#fff7f2;color:var(--fire-deep);border-color:#fff7f2}
+.contact .copied{color:#ffe08a}
+.contact :focus-visible{outline-color:#fff}
 .contact h2{font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.05;letter-spacing:-.04em;font-weight:600;max-width:18ch}
-.contact h2 .tone{color:var(--faint)}
+.contact h2 .tone{color:#ffb894}
 .copied{font:500 .78rem var(--mono);color:var(--live)}
-footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding-block:24px 40px;border-top:1px solid var(--line);color:var(--muted);font:400 .84rem var(--sans)}
+footer{margin-top:48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding-block:24px 40px;border-top:1px solid var(--line);color:var(--muted);font:400 .84rem var(--sans)}
 
 @media (max-width:900px){
   .navlinks{display:none}
@@ -240,12 +258,12 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding
   <section id="skills" aria-labelledby="h-skills">
     <h2 class="sec-title" id="h-skills"><span data-l="vi">Công cụ tôi dùng hằng ngày</span><span data-l="en">What I work with</span></h2>
     <div class="skills">
-      <div class="cell"><h3>Web</h3><div class="tags"><span class="tag">WordPress</span><span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">PHP</span><span class="tag">Git / GitHub</span></div></div>
-      <div class="cell"><h3><span data-l="vi">Hạ tầng</span><span data-l="en">Infrastructure</span></h3><div class="tags"><span class="tag">VPS</span><span class="tag">Coolify</span><span class="tag">Docker</span><span class="tag">Cloudflare</span><span class="tag">DNS</span><span class="tag">Backup</span></div></div>
-      <div class="cell"><h3><span data-l="vi">Hệ thống doanh nghiệp</span><span data-l="en">Business systems</span></h3><div class="tags"><span class="tag">LarkSuite</span><span class="tag">Bitrix24</span><span class="tag">Zoho CRM</span><span class="tag">Redmine</span></div></div>
-      <div class="cell"><h3><span data-l="vi">Dữ liệu và AI</span><span data-l="en">Data &amp; AI</span></h3><div class="tags"><span class="tag">GA4</span><span class="tag">Tag Manager</span><span class="tag">Search Console</span><span class="tag">AI agents</span></div></div>
-      <div class="cell"><h3><span data-l="vi">Văn phòng</span><span data-l="en">Office IT</span></h3><div class="tags"><span class="tag">LAN / WiFi</span><span class="tag">Helpdesk</span><span class="tag">MS Office</span></div></div>
-      <div class="cell"><h3><span data-l="vi">Ngôn ngữ</span><span data-l="en">Languages</span></h3><div class="tags"><span class="tag">Tiếng Việt</span><span class="tag">English · TOEIC 750</span></div></div>
+      <div class="cell k-fire"><h3>Web</h3><div class="tags"><span class="tag">WordPress</span><span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">PHP</span><span class="tag">Git / GitHub</span></div></div>
+      <div class="cell k-earth"><h3><span data-l="vi">Hạ tầng</span><span data-l="en">Infrastructure</span></h3><div class="tags"><span class="tag">VPS</span><span class="tag">Coolify</span><span class="tag">Docker</span><span class="tag">Cloudflare</span><span class="tag">DNS</span><span class="tag">Backup</span></div></div>
+      <div class="cell k-brown"><h3><span data-l="vi">Hệ thống doanh nghiệp</span><span data-l="en">Business systems</span></h3><div class="tags"><span class="tag">LarkSuite</span><span class="tag">Bitrix24</span><span class="tag">Zoho CRM</span><span class="tag">Redmine</span></div></div>
+      <div class="cell k-violet"><h3><span data-l="vi">Dữ liệu và AI</span><span data-l="en">Data &amp; AI</span></h3><div class="tags"><span class="tag">GA4</span><span class="tag">Tag Manager</span><span class="tag">Search Console</span><span class="tag">AI agents</span></div></div>
+      <div class="cell k-earth"><h3><span data-l="vi">Văn phòng</span><span data-l="en">Office IT</span></h3><div class="tags"><span class="tag">LAN / WiFi</span><span class="tag">Helpdesk</span><span class="tag">MS Office</span></div></div>
+      <div class="cell k-fire"><h3><span data-l="vi">Ngôn ngữ</span><span data-l="en">Languages</span></h3><div class="tags"><span class="tag">Tiếng Việt</span><span class="tag">English · TOEIC 750</span></div></div>
     </div>
     <div class="edu">
       <div><span class="mono">2017 – 2022</span><span><span data-l="vi">Cử nhân Tài chính – Ngân hàng, Đại học Văn Lang</span><span data-l="en">BA in Finance &amp; Banking, Van Lang University</span></span></div>
